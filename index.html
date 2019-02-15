@@ -7,8 +7,53 @@
 
 <body>
     <script>
+        let roundWinner;
+        let cScore = 0;
+        let pScore = 0;
+        //Computer randomly picks
+        function computerPlay(){
+            var computerChoice = ["Rock", "Paper", "Scissors"];
+            return computerChoice[Math.floor(Math.random()*computerChoice.length)];
+        }
+        //Function for a round of rock-paper-scissors
+        function playRound(playerSelection, computerSelection){
+            var result;
+            var playerSelection
+            var toLowerCase = playerSelection .toLowerCase();
+            var computerSelection = computerPlay();
+            if( (toLowerCase == "rock" && computerSelection == "Paper") || 
+                (toLowerCase == "scissors" && computerSelection == "Rock") ||
+                (toLowerCase == "paper" && computerSelection == "Scissors") ) {
+                    cScore ++;
+                    return result="You lose: " + computerSelection + " beats " + playerSelection;
+                }
 
-        
+            else if((toLowerCase == "rock" && computerSelection == "Scissors") ||
+                    (toLowerCase == "paper" && computerSelection == "Rock") ||
+                    (toLowerCase == "scissors" && computerSelection == "Paper")) {
+                    pScore ++;
+                    return result = "You win: " + playerSelection + " beats " + computerSelection;
+
+                }
+            else {
+                return result = "TIE!";
+            }
+        }
+        // 5 round game function, returns score at the end
+        function game(){
+            var r = 0;
+            while(r <= 5){
+                var playerSelection = prompt("rock paper or scissors", "").toLowerCase();
+                var computerSelection = computerPlay();
+                playRound(playerSelection, computerSelection);
+                if(cScore > pScore){
+                    alert("Computer wins");
+                }else if(pScore > cScore){
+                    alert("Player wins")
+                }
+            } r++;
+        }
+        game();
         
         
         
