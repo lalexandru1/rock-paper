@@ -10,6 +10,7 @@
         let roundWinner;
         let cScore = 0;
         let pScore = 0;
+        var r = 0;
         //Computer randomly picks
         function computerPlay(){
             var computerChoice = ["Rock", "Paper", "Scissors"];
@@ -24,34 +25,35 @@
             if( (toLowerCase == "rock" && computerSelection == "Paper") || 
                 (toLowerCase == "scissors" && computerSelection == "Rock") ||
                 (toLowerCase == "paper" && computerSelection == "Scissors") ) {
-                    cScore ++;
+                    cScore += 1;
                     return result="You lose: " + computerSelection + " beats " + playerSelection;
                 }
 
             else if((toLowerCase == "rock" && computerSelection == "Scissors") ||
                     (toLowerCase == "paper" && computerSelection == "Rock") ||
                     (toLowerCase == "scissors" && computerSelection == "Paper")) {
-                    pScore ++;
+                    pScore += 1;
                     return result = "You win: " + playerSelection + " beats " + computerSelection;
 
                 }
             else {
                 return result = "TIE!";
             }
+            r+=1;
         }
         // 5 round game function, returns score at the end
         function game(){
-            var r = 0;
             while(r <= 5){
                 var playerSelection = prompt("rock paper or scissors", "").toLowerCase();
                 var computerSelection = computerPlay();
                 playRound(playerSelection, computerSelection);
-                if(cScore > pScore){
-                    alert("Computer wins");
-                }else if(pScore > cScore){
-                    alert("Player wins")
-                }
-            } r++;
+            }
+            if(r==5 && cScore > pScore){
+                alert("Computer wins! Score: " + cScore+ " - " + pScore);
+            }                
+            else if(r==5 && pScore > cScore){
+                alert("Player wins! Score: " + pScore+ " - " + cScore);
+            }
         }
         game();
         
