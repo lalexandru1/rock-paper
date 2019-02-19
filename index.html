@@ -7,10 +7,9 @@
 
 <body>
     <script>
-        let roundWinner;
         let cScore = 0;
         let pScore = 0;
-        var r = 0;
+        r = 0;
         //Computer randomly picks
         function computerPlay(){
             var computerChoice = ["Rock", "Paper", "Scissors"];
@@ -26,24 +25,25 @@
                 (toLowerCase == "scissors" && computerSelection == "Rock") ||
                 (toLowerCase == "paper" && computerSelection == "Scissors") ) {
                     cScore += 1;
-                    return result="You lose: " + computerSelection + " beats " + playerSelection;
+                    result="You lose: " + computerSelection + " beats " + playerSelection;
                 }
 
             else if((toLowerCase == "rock" && computerSelection == "Scissors") ||
                     (toLowerCase == "paper" && computerSelection == "Rock") ||
                     (toLowerCase == "scissors" && computerSelection == "Paper")) {
                     pScore += 1;
-                    return result = "You win: " + playerSelection + " beats " + computerSelection;
+                    result = "You win: " + playerSelection + " beats " + computerSelection;
 
                 }
             else {
-                return result = "TIE!";
+                result = "TIE!";
             }
-            r+=1;
+            r += 1;
+            return result;
         }
         // 5 round game function, returns score at the end
         function game(){
-            while(r <= 5){
+            while(r < 5){
                 var playerSelection = prompt("rock paper or scissors", "").toLowerCase();
                 var computerSelection = computerPlay();
                 playRound(playerSelection, computerSelection);
@@ -53,6 +53,8 @@
             }                
             else if(r==5 && pScore > cScore){
                 alert("Player wins! Score: " + pScore+ " - " + cScore);
+            }else {
+                alert("TIE!");
             }
         }
         game();
